@@ -30,6 +30,7 @@ export default function MainScreen() {
             <View>
                 <Text style={styles.headLine}>2-DOs on</Text>
                 <Text style={styles.date}>{dayName()}, {ordinalNumbers()}</Text>
+           
             </View>
             <TouchableOpacity>
                 <Icon
