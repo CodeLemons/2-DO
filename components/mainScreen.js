@@ -1,32 +1,43 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
+import moment from 'moment';
+
 
 export default function MainScreen() {
     return (
         <View>
-            <Text style={styles.headLine}>2-DO's on{"\n"}/current-date/</Text>
-            <View style={styles.reactangle} />
+            <Text style={styles.headLine}>2-DO's on</Text>
+            <Text style={styles.date}>{moment().format('dddd')} {moment().format('LL')}</Text>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     headLine: {
-        fontSize: 20,
+        fontSize: 30,
         fontWeight: 'bold',
-        marginTop: '20%',
+        marginTop: '16%',
         width: '100%',
-        height: '50%',
+        height: '19%',
         color: 'white',
         textAlign: 'left',
         paddingLeft: 40,
     },
-    reactangle: {
-        position: 'absolute',
-        marginTop: 170,
-        marginLeft: 70,
-        width: 320,
-        height: 40,
-        backgroundColor: '#20212C',
+    date: {
+        fontSize: 15,
+        fontWeight: 'bold',
+        marginTop: '0%',
+        width: '100%',
+        color: 'white',
+        textAlign: 'left',
+        paddingLeft: 40,
     }
+    // reactangle: {
+    //     position: 'absolute',
+    //     marginTop: 170,
+    //     marginLeft: 70,
+    //     width: 320,
+    //     height: 40,
+    //     backgroundColor: '#20212C',
+    // }
 })
