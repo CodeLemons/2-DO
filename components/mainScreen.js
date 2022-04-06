@@ -1,13 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
-import moment from 'moment';
+import dayName from '../shared/dayName';
+import ordinalNumbers from '../shared/ordinalNumbers';
 
 
 export default function MainScreen() {
     return (
         <View>
             <Text style={styles.headLine}>2-DO's on</Text>
-            <Text style={styles.date}>{moment().format('dddd')} {moment().format('LL')}</Text>
+            <Text style={styles.date}>{dayName()}, {ordinalNumbers()}</Text>
         </View>
     )
 }
