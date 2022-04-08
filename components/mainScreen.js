@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Modal, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Modal, TouchableOpacity, FlatList } from 'react-native';
 import dayName from '../shared/dayName';
 import ordinalNumbers from '../shared/ordinalNumbers';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -8,6 +8,13 @@ import Icon from 'react-native-vector-icons/AntDesign';
 export default function MainScreen() {
 
     const [modalOpen, setModalOpen] = useState(false);
+
+    const [tasks, setTasks] = useState([
+        { title: 'Go to gym', body: 'lorem ipsum', category: 'daily', key: '1' },
+        { title: 'Finish Paper', body: 'lorem ipsum', category: 'urgent', key: '2'},
+        { title: 'Shopping', body: 'lorem ipsum', category: 'weekly', key: '3'},
+        { title: 'Call grandma', body: 'lorem ipsum', category: 'personal', key: '4'}
+    ])
 
     return (
         <View style={styles.container}>
@@ -25,7 +32,6 @@ export default function MainScreen() {
                         />
                     </TouchableOpacity>
                 </View>
-                
             </Modal>
             <View>
                 <Text style={styles.headLine}>2-DOs on</Text>
@@ -42,6 +48,10 @@ export default function MainScreen() {
                     onPress={() => setModalOpen(true)}
                 />
             </TouchableOpacity>
+            <FlatList data={tasks} renderItem={({ item }) => (
+                <Text style={styles.list}>{item.title}</Text>
+            )}/>
+            
         </View>
     )
 }
@@ -85,6 +95,12 @@ const styles = StyleSheet.create({
         marginTop: 510,
         padding: 10,
         alignSelf: 'center'
+    },
+    list: {
+        fontSize: 25,
+        flex: 1,
+        flexDirection: 'row',
+        padding: 5,
     }
     // reactangle: {
     //     position: 'absolute',
