@@ -12,9 +12,7 @@ export default function App() {
         <Text style={styles.sectionTitle}>2-DOs on</Text>
         <Text style={styles.sectionDate}>{dayName()}, {ordinalNumbers()}</Text>
         <View style={styles.items}>
-          <Task text={'Task 1'} />
-          <Task text={'Task 2'} />
-          <Task text={'Task 3'} />
+          <Task />
         </View>
         <StatusBar style="auto" />
       </View>

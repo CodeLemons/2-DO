@@ -1,19 +1,24 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import BouncyCheckbox from "react-native-bouncy-checkbox";
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
+import BoxStyle from '../shared/boxStyle';
+
 
 const Task = (props) => {
     
+    const [task, setTask] = useState([
+        { title: 'Go to gym', category: 'daily', body:'lorem ipsum', key: '1' },
+        { title: 'Finish Paper', category: 'urgent', body:'lorem ipsum', key: '2' },
+        { title: 'Shopping', category: 'weekly', body:'lorem ipsum', key: '3' },
+        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '4' },
+    ])
+
     return (
-        <View style={styles.item}>
-            <View style={styles.itemLeft}>
-                <BouncyCheckbox 
-                    fillColor='black'
-                    iconStyle={{borderColor: 'black'}}    
-                />
-                <Text style={styles.itemText}>{props.text}</Text>
-            </View>
-            <View style={styles.circular}></View>
+        <View>
+            <FlatList data={task} renderItem={({ item }) => (
+                <BoxStyle>
+                    <Text style={styles.itemText}>{ item.title }</Text>
+                </BoxStyle>
+            )}/>
         </View>
     )
 }
@@ -21,7 +26,7 @@ const Task = (props) => {
 const styles = StyleSheet.create ({
     item:{
         backgroundColor: '#20212C',
-        padding: 12,
+        padding: 15,
         borderRadius: 10,
         flexDirection: 'row',
         alignItems: 'center',
@@ -34,14 +39,17 @@ const styles = StyleSheet.create ({
         shadowRadius: 2,
     },
     boxStyle:{
-        width: 25,
-        height: 25,
+        width: 40,
+        height: 40,
         backgroundColor: '#eee',
     },
     itemLeft: {
         flexDirection: 'row',
         alignItems: 'center',
         flexWrap: 'wrap'
+    },
+    itemText :{
+        fontSize: 18,
     }
 });
 
