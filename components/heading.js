@@ -17,11 +17,13 @@ const styles = StyleSheet.create({
         padding: 10
     },
     sectionTitle: {
+        marginTop: 110,
         fontSize: 35,
         fontWeight: 'bold',
         color: 'white'
     },
     sectionDate: {
+        marginTop: 10,
         fontSize: 22,
         color: 'white'
     }
