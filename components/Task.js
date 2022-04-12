@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 import BoxStyle from '../shared/boxStyle';
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 
 const Task = (props) => {
@@ -13,11 +14,18 @@ const Task = (props) => {
     ])
 
     return (
-        <View>
+        <View style={styles.listView}>
             <FlatList data={task} renderItem={({ item }) => (
-                <BoxStyle>
-                    <Text style={styles.itemText}>{ item.title }</Text>
-                </BoxStyle>
+                    <View style={styles.item}>
+                        <BouncyCheckbox 
+                            isChecked={false}
+                            text={item.title}
+                            textStyle={{color: 'white', fontSize: 20, fontWeight: 'bold'}}
+                            size={35}
+                            iconStyle={{ borderRadius: 10, borderColor: 'white'}}
+                            fillColor='#20212C'
+                            textDecorationColor='red' />
+                    </View>
             )}/>
         </View>
     )
@@ -37,11 +45,7 @@ const styles = StyleSheet.create ({
         shadowColor: 'black',
         shadowOpacity: 0.3,
         shadowRadius: 2,
-    },
-    boxStyle:{
-        width: 40,
-        height: 40,
-        backgroundColor: '#eee',
+        width: 360
     },
     itemLeft: {
         flexDirection: 'row',
@@ -50,6 +54,10 @@ const styles = StyleSheet.create ({
     },
     itemText :{
         fontSize: 18,
+        color: 'white'
+    },
+    listView: {
+        alignItems: 'center',
     }
 });
 
