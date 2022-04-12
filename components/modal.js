@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Modal, Alert, TextInput } from 'react-native';
+import { View, Text, StyleSheet, Modal, TextInput, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-
 
 export default function Heading() {
 
@@ -10,20 +9,43 @@ export default function Heading() {
     return (
         <View style={styles.wrapper}>
             <Modal animationType='slide' visible={modal}>
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View style={styles.modalContent}>
-                    <Text style={styles.heading}>New Task</Text>
-                    <View style={{marginBottom: '60%'}}>
-                        <View style={styles.titleInput}>
-                            <TextInput placeholder="Task title"></TextInput>
-                        </View>
-                        <View style={styles.bodyInput}>
-                            <TextInput multiline placeholder="Task Description"></TextInput>
-                        </View>
+                    <Text style={styles.mainHeading}>New Task</Text>
+                    <View> 
+                            <TextInput 
+                                style={styles.titleInput}
+                                placeholder="Task title" 
+                                placeholderTextColor="#eee" />
+                            <TextInput
+                                style={styles.bodyInput} 
+                                multiline 
+                                placeholder="Task Description" 
+                                placeholderTextColor="#eee" />
                     </View>
-                    <Icon name="arrow-down-circle-sharp" size={80} color="#20212C" onPress={() => setModal(false)}/>
+                        <Text style={styles.secondHeading}>Category</Text>
+                    <View style={{
+                        flex: 1,
+                        flexDirection: 'row', 
+                        margin: 10,
+                        padding: 10,
+                        marginRight: 155}}>
+                        <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
+                        <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
+                        <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
+                        <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
+                        <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
+                    </View>
+                    <Icon 
+                        name="arrow-down-circle-sharp" 
+                        size={80} 
+                        style={{marginBottom: 75}}
+                        color="#20212C" 
+                        onPress={() => setModal(false)} />
                 </View>
+                </TouchableWithoutFeedback>
             </Modal>
-            <Icon name="add-circle" size={80} color="#20212C" onPress={() => setModal(true)}/>
+            <Icon style={{ marginTop: 80, marginBottom: 80}}name="add-circle" size={80} color="#20212C" onPress={() => setModal(true)}/>
         </View>
     )
 }
@@ -33,16 +55,25 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#17181F',
         alignItems: 'center',
-        justifyContent: 'space-around',
+        justifyContent: 'space-evenly',
     },
     wrapper: {
         alignItems: 'center',
     },
-    heading: {
+    mainHeading: {
         fontSize: 30,
         fontWeight: 'bold',
         color: 'white',
-        marginTop: 80,
+        marginTop: 100,
+        marginBottom: 40,
+        paddingRight: 213
+    },
+    secondHeading: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        color: 'white',
+        marginTop: 20,
+        marginBottom: 20,
         paddingRight: 213
     },
     titleInput: {
@@ -74,7 +105,6 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 2,
         width: 345,
-        height: 100
-        
+        height: 100   
     }
 })
