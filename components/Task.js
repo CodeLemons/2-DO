@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import BoxStyle from '../shared/boxStyle';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
+import Heading from './heading';
+import Modal from './modal';
+import { FadeInFlatList } from '@ja-ka/react-native-fade-in-flatlist';
+
 
 
 const Task = (props) => {
@@ -11,11 +15,35 @@ const Task = (props) => {
         { title: 'Finish Paper', category: 'urgent', body:'lorem ipsum', key: '2' },
         { title: 'Shopping', category: 'weekly', body:'lorem ipsum', key: '3' },
         { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '4' },
+        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '5' },
+        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '6' },
+        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '7' },
+        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '8' },
+        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '9' },
+        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '11' },
+        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '12' },
+        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '13' },
+        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '14' },
+        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '15' },
+        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '16' },
+        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '17' },
+        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '18' },
+        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '19' },
+        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '20' },
+        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '21' },
+        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '22' },
     ])
 
     return (
         <View style={styles.listView}>
-            <FlatList data={task} renderItem={({ item }) => (
+            <FadeInFlatList 
+                initialDelay={0}
+                durationPerItem={500}
+                parallelItems={5}
+                itemsToFadeIn={10}
+                data={task}
+                showsVerticalScrollIndicator={false}
+                renderItem={({ item }) => (
                     <View style={styles.item}>
                         <BouncyCheckbox 
                             isChecked={false}
@@ -57,8 +85,11 @@ const styles = StyleSheet.create ({
         color: 'white'
     },
     listView: {
+        marginTop: 100,
         alignItems: 'center',
-    }
+        height: 500
+    },
+    
 });
 
 export default Task;
