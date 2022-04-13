@@ -45,21 +45,26 @@ export default function Heading() {
                 </View>
                 </TouchableWithoutFeedback>
             </Modal>
-            <Icon style={{ marginTop: 80, marginBottom: 80}}name="add-circle" size={80} color="#20212C" onPress={() => setModal(true)}/>
+            <View style={styles.wrapperContent}>
+                <Icon name="add-circle" size={80} color="#20212C" onPress={() => setModal(true)}/>
+            </View>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
+    wrapper: {
+        flex: 1,
+        alignItems: 'center',
+    },
     modalContent: {
         flex: 1,
         backgroundColor: '#17181F',
         alignItems: 'center',
         justifyContent: 'space-evenly',
     },
-    wrapper: {
-        alignItems: 'center',
-        backgroundColor: 'cyan'
+    wrapperContent: {
+        paddingTop: 50,
     },
     mainHeading: {
         fontSize: 30,

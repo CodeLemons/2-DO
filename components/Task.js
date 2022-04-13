@@ -85,10 +85,8 @@ const styles = StyleSheet.create ({
         color: 'white'
     },
     listView: {
-        marginTop: 100,
+        flex: 3,
         alignItems: 'center',
-        height: 500,
-        backgroundColor: 'red'
     },
     
 });

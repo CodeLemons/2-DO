@@ -14,18 +14,18 @@ export default function Heading() {
 
 const styles = StyleSheet.create({
     container:{
-        padding: 10,
-        backgroundColor: 'blue'
+        flex: 1,
     },
     sectionTitle: {
-        marginTop: 110,
         fontSize: 35,
         fontWeight: 'bold',
-        color: 'white'
+        color: 'white',
+        paddingTop: 60,
+        paddingLeft: 30,
     },
     sectionDate: {
-        marginTop: 10,
         fontSize: 22,
-        color: 'white'
+        color: 'white',
+        paddingLeft: 30,
     }
 })

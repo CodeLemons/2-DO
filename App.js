@@ -16,15 +16,8 @@ export default function App() {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
+      width: '100%',
+      height: '100%',
       backgroundColor: '#17181F',
-      justifyContent: 'space-evenly',
-      padding: 15
-  },
-  gradient: {
-    paddingHorizontal: 40,
-    paddingVertical: 10,
-    borderRadius: 10,
-    margin: 20,
   }
 });
