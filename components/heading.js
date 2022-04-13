@@ -14,7 +14,8 @@ export default function Heading() {
 
 const styles = StyleSheet.create({
     container:{
-        padding: 10
+        padding: 10,
+        backgroundColor: 'blue'
     },
     sectionTitle: {
         marginTop: 110,

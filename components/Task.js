@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import BoxStyle from '../shared/boxStyle';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import Heading from './heading';
@@ -87,7 +87,8 @@ const styles = StyleSheet.create ({
     listView: {
         marginTop: 100,
         alignItems: 'center',
-        height: 500
+        height: 500,
+        backgroundColor: 'red'
     },
     
 });

@@ -12,7 +12,7 @@ export default function Heading() {
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View style={styles.modalContent}>
                     <Text style={styles.mainHeading}>New Task</Text>
-                    <View> 
+                        <View> 
                             <TextInput 
                                 style={styles.titleInput}
                                 placeholder="Task title" 
@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
     },
     wrapper: {
         alignItems: 'center',
+        backgroundColor: 'cyan'
     },
     mainHeading: {
         fontSize: 30,
