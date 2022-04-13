@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text,View, SafeAreaView } from 'react-native';
 import Heading from './components/heading';
 import Task from './components/task';
@@ -19,7 +18,13 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: '#17181F',
-      padding: 10,
-      justifyContent: 'space-evenly'
+      justifyContent: 'space-evenly',
+      padding: 15
+  },
+  gradient: {
+    paddingHorizontal: 40,
+    paddingVertical: 10,
+    borderRadius: 10,
+    margin: 20,
   }
 });
