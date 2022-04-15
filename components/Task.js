@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import BoxStyle from '../shared/boxStyle';
-import BouncyCheckbox from "react-native-bouncy-checkbox";
-import Heading from './heading';
-import Modal from './modal';
 import { FadeInFlatList } from '@ja-ka/react-native-fade-in-flatlist';
+import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { View, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
 
 
 
-const Task = (props) => {
+const Task = () => {
     
     const [task, setTask] = useState([
         { title: 'Go to gym', category: 'daily', body:'lorem ipsum', key: '1' },
@@ -35,16 +32,16 @@ const Task = (props) => {
     ])
 
     return (
-        <View style={styles.listView}>
+        <View style={styles.container}>
             <FadeInFlatList 
+                data={task}
                 initialDelay={0}
-                durationPerItem={500}
                 parallelItems={5}
                 itemsToFadeIn={10}
-                data={task}
+                durationPerItem={500}
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item }) => (
-                    <View style={styles.item}>
+                    <View style={styles.boxStyle}>
                         <BouncyCheckbox 
                             isChecked={false}
                             text={item.title}
@@ -60,7 +57,11 @@ const Task = (props) => {
 }
 
 const styles = StyleSheet.create ({
-    item:{
+    container: {
+        flex: 3,
+        alignItems: 'center',
+    },
+    boxStyle:{
         backgroundColor: '#20212C',
         padding: 15,
         borderRadius: 10,
@@ -75,20 +76,6 @@ const styles = StyleSheet.create ({
         shadowRadius: 2,
         width: 360
     },
-    itemLeft: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        flexWrap: 'wrap'
-    },
-    itemText :{
-        fontSize: 18,
-        color: 'white'
-    },
-    listView: {
-        flex: 3,
-        alignItems: 'center',
-    },
-    
 });
 
 export default Task;

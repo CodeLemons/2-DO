@@ -1,7 +1,7 @@
 import { StyleSheet, Text,View, SafeAreaView } from 'react-native';
 import Heading from './components/heading';
-import Task from './components/task';
 import Modal from './components/modal';
+import Task from './components/task';
 
 
 export default function App() {

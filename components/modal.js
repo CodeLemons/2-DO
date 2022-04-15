@@ -1,51 +1,51 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Modal, TextInput, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView} from 'react-native';
+import { View, Text, StyleSheet, Modal, TextInput, TouchableWithoutFeedback, Keyboard} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import React, { useState } from 'react';
 
 export default function Heading() {
 
     const [modal, setModal] = useState(false);
 
     return (
-        <View style={styles.wrapper}>
+        <View style={styles.container}>
             <Modal animationType='slide' visible={modal}>
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                <View style={styles.modalContent}>
-                    <Text style={styles.mainHeading}>New Task</Text>
-                        <View> 
-                            <TextInput 
-                                style={styles.titleInput}
-                                placeholder="Task title" 
-                                placeholderTextColor="#eee" />
-                            <TextInput
-                                style={styles.bodyInput} 
-                                multiline 
-                                placeholder="Task Description" 
-                                placeholderTextColor="#eee" />
+                    <View style={styles.modalContent}>
+                        <Text style={styles.sectionTitle}>New Task</Text>
+                            <View> 
+                                <TextInput 
+                                    style={styles.titleInput}
+                                    placeholder="Task title" 
+                                    placeholderTextColor="#eee" />
+                                <TextInput
+                                    style={styles.bodyInput} 
+                                    multiline 
+                                    placeholder="Task Description" 
+                                    placeholderTextColor="#eee" />
+                        </View>
+                            <Text style={styles.sectionCategory}>Category</Text>
+                        <View style={{
+                            flex: 1,
+                            flexDirection: 'row', 
+                            margin: 10,
+                            padding: 10,
+                            marginRight: 155}}>
+                            <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
+                            <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
+                            <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
+                            <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
+                            <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
+                        </View>
+                        <Icon 
+                            name="arrow-down-circle-sharp" 
+                            size={80} 
+                            style={{marginBottom: 75}}
+                            color="#20212C" 
+                            onPress={() => setModal(false)} />
                     </View>
-                        <Text style={styles.secondHeading}>Category</Text>
-                    <View style={{
-                        flex: 1,
-                        flexDirection: 'row', 
-                        margin: 10,
-                        padding: 10,
-                        marginRight: 155}}>
-                        <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
-                        <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
-                        <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
-                        <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
-                        <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
-                    </View>
-                    <Icon 
-                        name="arrow-down-circle-sharp" 
-                        size={80} 
-                        style={{marginBottom: 75}}
-                        color="#20212C" 
-                        onPress={() => setModal(false)} />
-                </View>
                 </TouchableWithoutFeedback>
             </Modal>
-            <View style={styles.wrapperContent}>
+            <View style={styles.iconView}>
                 <Icon name="add-circle" size={80} color="#20212C" onPress={() => setModal(true)}/>
             </View>
         </View>
@@ -53,7 +53,7 @@ export default function Heading() {
 }
 
 const styles = StyleSheet.create({
-    wrapper: {
+    container: {
         flex: 1,
         alignItems: 'center',
     },
@@ -63,23 +63,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-evenly',
     },
-    wrapperContent: {
-        paddingTop: 50,
-    },
-    mainHeading: {
+    sectionTitle: {
         fontSize: 30,
         fontWeight: 'bold',
         color: 'white',
         marginTop: 100,
         marginBottom: 40,
-        paddingRight: 213
-    },
-    secondHeading: {
-        fontSize: 30,
-        fontWeight: 'bold',
-        color: 'white',
-        marginTop: 20,
-        marginBottom: 20,
         paddingRight: 213
     },
     titleInput: {
@@ -112,5 +101,16 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         width: 345,
         height: 100   
+    },
+    sectionCategory: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        color: 'white',
+        marginTop: 20,
+        marginBottom: 20,
+        paddingRight: 213
+    },
+    iconView: {
+        paddingTop: 50,
     }
 })
