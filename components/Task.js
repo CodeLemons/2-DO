@@ -1,6 +1,6 @@
 import { FadeInFlatList } from '@ja-ka/react-native-fade-in-flatlist';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import React, { useState } from 'react';
 
 
@@ -8,27 +8,27 @@ import React, { useState } from 'react';
 const Task = () => {
     
     const [task, setTask] = useState([
-        { title: 'Go to gym', category: 'daily', body:'lorem ipsum', key: '1' },
-        { title: 'Finish Paper', category: 'urgent', body:'lorem ipsum', key: '2' },
-        { title: 'Shopping', category: 'weekly', body:'lorem ipsum', key: '3' },
-        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '4' },
-        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '5' },
-        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '6' },
-        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '7' },
-        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '8' },
-        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '9' },
-        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '11' },
-        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '12' },
-        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '13' },
-        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '14' },
-        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '15' },
-        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '16' },
-        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '17' },
-        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '18' },
-        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '19' },
-        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '20' },
-        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '21' },
-        { title: 'Take a shower', category: 'personal', body:'lorem ipsum', key: '22' },
+        { title: 'Go to gym', category: 'daily', key: '1' },
+        { title: 'Finish Paper', category: 'urgent', key: '2' },
+        { title: 'Shopping', category: 'weekly', key: '3' },
+        { title: 'Take a shower', category: 'personal', key: '4' },
+        { title: 'Take a shower', category: 'personal', key: '5' },
+        { title: 'Take a shower', category: 'personal', key: '6' },
+        { title: 'Take a shower', category: 'personal', key: '7' },
+        { title: 'Take a shower', category: 'personal', key: '8' },
+        { title: 'Take a shower', category: 'personal', key: '9' },
+        { title: 'Take a shower', category: 'personal', key: '11' },
+        { title: 'Take a shower', category: 'personal', key: '12' },
+        { title: 'Take a shower', category: 'personal', key: '13' },
+        { title: 'Take a shower', category: 'personal', key: '14' },
+        { title: 'Take a shower', category: 'personal', key: '15' },
+        { title: 'Take a shower', category: 'personal', key: '16' },
+        { title: 'Take a shower', category: 'personal', key: '17' },
+        { title: 'Take a shower', category: 'personal', key: '18' },
+        { title: 'Take a shower', category: 'personal', key: '19' },
+        { title: 'Take a shower', category: 'personal', key: '20' },
+        { title: 'Take a shower', category: 'personal', key: '21' },
+        { title: 'Take a shower', category: 'personal', key: '22' },
     ])
 
     return (
