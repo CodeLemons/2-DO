@@ -1,6 +1,8 @@
-import { View, Text, StyleSheet, Modal, TextInput, TouchableWithoutFeedback, Keyboard} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { View, Text, StyleSheet, Modal, TextInput,
+TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Button} from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
 import React, { useState } from 'react';
+import { Formik } from 'formik';
 
 export default function Heading() {
 
@@ -8,45 +10,67 @@ export default function Heading() {
 
     return (
         <View style={styles.container}>
-            <Modal animationType='slide' visible={modal}>
+            <Modal animationType='slide' visible={modal} onRequestClose={() => setModal(false)}>
+                <KeyboardAvoidingView
+                    behavior='padding'
+                    style={{ flex: 1}}>
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                     <View style={styles.modalContent}>
-                        <Text style={styles.sectionTitle}>New Task</Text>
-                            <View> 
-                                <TextInput 
-                                    style={styles.titleInput}
-                                    placeholder="Task title" 
-                                    placeholderTextColor="#eee" />
-                                <TextInput
-                                    style={styles.bodyInput} 
-                                    multiline 
-                                    placeholder="Task Description" 
-                                    placeholderTextColor="#eee" />
+                        <View style={{flex: 0, backgroundColor: 'red'}}>
+                            <Icon 
+                                name="arrowleft" 
+                                size={60} 
+                                style={{}}
+                                color="#eee" 
+                                onPress={() => setModal(false)} />
                         </View>
-                            <Text style={styles.sectionCategory}>Category</Text>
-                        <View style={{
-                            flex: 1,
-                            flexDirection: 'row', 
-                            margin: 10,
-                            padding: 10,
-                            marginRight: 155}}>
-                            <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
-                            <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
-                            <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
-                            <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
-                            <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
+                        <View style={{backgroundColor: 'green'}}>
+                            <Text style={styles.sectionTitle}>New Task</Text>
+                            <Formik
+                                initialValues={{ title: ''}}
+                                onSubmit={(values) => {
+                                    console.log(values);
+                                }} 
+                            >
+                                {(props) => (
+                                    <View style={{ flex: 0, alignItems: 'center'}}>
+                                        <TextInput 
+                                            style={styles.titleInput}
+                                            placeholder="Task title"
+                                            onChangeText={props.handleChange('title')}
+                                            value={props.values.title} 
+                                            placeholderTextColor="#eee" />
+                                        <Text style={styles.sectionCategory}>Category</Text>
+                                        <View style={{
+                                            flex: 0,
+                                            flexDirection: 'row', 
+                                            margin: 10,
+                                            padding: 10,
+                                            marginRight: 155}}>
+                                            <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
+                                            <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
+                                            <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
+                                            <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
+                                            <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
+                                        </View>
+                                        <View style={{paddingRight: 50}}>
+                                            <Icon 
+                                                name="checkcircle" 
+                                                size={80} 
+                                                style={{paddingTop: 70}}
+                                                color="#20212C" 
+                                                onPress={props.handleSubmit} />
+                                        </View>
+                                    </View>
+                                )}
+                            </Formik>
                         </View>
-                        <Icon 
-                            name="arrow-down-circle-sharp" 
-                            size={80} 
-                            style={{marginBottom: 75}}
-                            color="#20212C" 
-                            onPress={() => setModal(false)} />
                     </View>
                 </TouchableWithoutFeedback>
+                </KeyboardAvoidingView>
             </Modal>
             <View style={styles.iconView}>
-                <Icon name="add-circle" size={80} color="#20212C" onPress={() => setModal(true)}/>
+                <Icon name="pluscircle" size={80} color="#20212C" onPress={() => setModal(true)}/>
             </View>
         </View>
     )
@@ -69,7 +93,7 @@ const styles = StyleSheet.create({
         color: 'white',
         marginTop: 100,
         marginBottom: 40,
-        paddingRight: 213
+        paddingLeft: 25 
     },
     titleInput: {
         backgroundColor: '#20212C',
@@ -85,22 +109,6 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 2,
         width: 345,
-    },
-    bodyInput: {
-        backgroundColor: '#20212C',
-        padding: 15,
-        borderRadius: 10,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        marginBottom: 20,
-        elevation: 5,
-        shadowOffset: { width: 2, height: 2 },
-        shadowColor: 'black',
-        shadowOpacity: 0.3,
-        shadowRadius: 2,
-        width: 345,
-        height: 100   
     },
     sectionCategory: {
         fontSize: 30,
