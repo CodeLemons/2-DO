@@ -8,6 +8,9 @@
 
 ### In progress 
 - [ ] Complete modal screen ( with working submit forms and fixed modal submit button)
+## What's going on on the current task in progress?
+- [ ] The modal access button -> shadows do not work on the vector icon used for the button... Needs fixing.
+- [x] Deleted second text input that was deemed unecessary after some more thinking.
 
 ### Done ✓
 - [x] Refactor StyleSheet names on all files for easier code readability
