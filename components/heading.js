@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
     },
     sectionDate: {
         fontSize: 22,
-        color: 'white',
+        fontWeight: 'bold',
+        color: '#da2d2d',
         paddingLeft: 30,
     }
 })
