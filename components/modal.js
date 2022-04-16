@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Modal, TextInput,
-TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Button} from 'react-native';
-import Icon from 'react-native-vector-icons/AntDesign';
+TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, TouchableOpacity} from 'react-native';
+import Icon from 'react-native-vector-icons/EvilIcons';
 import React, { useState } from 'react';
 import { Formik } from 'formik';
 
@@ -16,15 +16,15 @@ export default function Heading() {
                     style={{ flex: 1}}>
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                     <View style={styles.modalContent}>
-                        <View style={{flex: 0, backgroundColor: 'red'}}>
+                        <View style={{flex: 0, marginRight: 290, marginTop: 30}}>
                             <Icon 
-                                name="arrowleft" 
+                                name="chevron-left" 
                                 size={60} 
                                 style={{}}
                                 color="#eee" 
                                 onPress={() => setModal(false)} />
                         </View>
-                        <View style={{backgroundColor: 'green'}}>
+                        <View style={{flex: 1}}>
                             <Text style={styles.sectionTitle}>New Task</Text>
                             <Formik
                                 initialValues={{ title: ''}}
@@ -53,13 +53,17 @@ export default function Heading() {
                                             <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
                                             <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
                                         </View>
-                                        <View style={{paddingRight: 50}}>
-                                            <Icon 
+                                        <View>
+                                            {/* <Icon 
                                                 name="checkcircle" 
-                                                size={80} 
-                                                style={{paddingTop: 70}}
+                                                size={80}
                                                 color="#20212C" 
-                                                onPress={props.handleSubmit} />
+                                                onPress={props.handleSubmit} /> */}
+                                            <TouchableOpacity 
+                                                onPress={props.handleSubmit}
+                                                style={styles.submitButton}>
+                                                <Text style={styles.buttonText}>CREATE TASK</Text>
+                                            </TouchableOpacity>
                                         </View>
                                     </View>
                                 )}
@@ -70,7 +74,9 @@ export default function Heading() {
                 </KeyboardAvoidingView>
             </Modal>
             <View style={styles.iconView}>
-                <Icon name="pluscircle" size={80} color="#20212C" onPress={() => setModal(true)}/>
+                <TouchableOpacity onPress={() => setModal(true)}>
+                        <Icon style={styles.iconShadow} name="plus" size={100} color="#da2d2d" />
+                </TouchableOpacity>
             </View>
         </View>
     )
@@ -120,5 +126,38 @@ const styles = StyleSheet.create({
     },
     iconView: {
         paddingTop: 50,
+    },
+    submitButton: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 80,
+        borderRadius: 10,
+        elevation: 3,
+        backgroundColor: '#da2d2d',
+    },
+    taskButton: {
+        width: 80,
+        height: 80,
+        borderRadius: 100,
+        backgroundColor: '#17181F',
+        borderWidth: 1,
+        borderColor: '#DA2D2D',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    buttonText: {
+        fontSize: 16,
+        lineHeight: 21,
+        fontWeight: 'bold',
+        letterSpacing: 0.25,
+        color: 'white',
+    },
+    iconShadow: {
+        shadowColor: 'black',
+        shadowOpacity: 0.26,
+        shadowOffset: { width: 0, height: 2},
+        shadowRadius: 10,
+        elevation: 3,
     }
 })
