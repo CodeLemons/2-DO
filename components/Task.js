@@ -1,6 +1,6 @@
 import { FadeInFlatList } from '@ja-ka/react-native-fade-in-flatlist';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, ScrollView} from 'react-native';
 import React, { useState } from 'react';
 
 
@@ -34,6 +34,7 @@ const Task = () => {
     return (
         <View style={styles.container}>
             <FadeInFlatList 
+                fadingEdgeLength={30}
                 data={task}
                 initialDelay={0}
                 parallelItems={5}
@@ -47,7 +48,7 @@ const Task = () => {
                             text={item.title}
                             textStyle={{color: 'white', fontSize: 20, fontWeight: 'bold'}}
                             size={35}
-                            iconStyle={{ borderRadius: 10, borderColor: 'white'}}
+                            iconStyle={{ borderRadius: 10, borderColor: '#da2d2d'}}
                             fillColor='#20212C'
                             textDecorationColor='red' />
                     </View>
