@@ -1,12 +1,15 @@
 import { View, Text, StyleSheet, Modal, TextInput,
-TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, TouchableOpacity} from 'react-native';
+TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, TouchableOpacity, Button} from 'react-native';
 import Icon from 'react-native-vector-icons/EvilIcons';
 import React, { useState } from 'react';
 import { Formik } from 'formik';
+import DatePicker from 'react-native-date-picker'
+
 
 export default function Heading() {
 
     const [modal, setModal] = useState(false);
+    const [date, setDate] = useState(new Date())
 
     return (
         <View style={styles.container}>
@@ -20,26 +23,28 @@ export default function Heading() {
                             <Icon 
                                 name="chevron-left" 
                                 size={60} 
-                                style={{}}
+                                style={{paddingRight: 30}}
                                 color="#eee" 
                                 onPress={() => setModal(false)} />
                         </View>
+                        <DatePicker date={date} onDateChange={setDate} />
                         <View style={{flex: 1}}>
                             <Text style={styles.sectionTitle}>New Task</Text>
                             <Formik
-                                initialValues={{ title: ''}}
+                                initialValues={{ title: '', date: '', time: ''}}
                                 onSubmit={(values) => {
                                     console.log(values);
                                 }} 
                             >
-                                {(props) => (
+                                {({handleChange, handleSubmit, values}) => (
                                     <View style={{ flex: 0, alignItems: 'center'}}>
                                         <TextInput 
                                             style={styles.titleInput}
                                             placeholder="Task title"
-                                            onChangeText={props.handleChange('title')}
-                                            value={props.values.title} 
+                                            onChangeText={handleChange('title')}
+                                            value={values.title} 
                                             placeholderTextColor="#eee" />
+                        
                                         <Text style={styles.sectionCategory}>Category</Text>
                                         <View style={{
                                             flex: 0,
@@ -53,14 +58,9 @@ export default function Heading() {
                                             <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
                                             <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
                                         </View>
-                                        <View>
-                                            {/* <Icon 
-                                                name="checkcircle" 
-                                                size={80}
-                                                color="#20212C" 
-                                                onPress={props.handleSubmit} /> */}
+                                        <View style={{paddingTop: 150}}>
                                             <TouchableOpacity 
-                                                onPress={props.handleSubmit}
+                                                onPress={handleSubmit}
                                                 style={styles.submitButton}>
                                                 <Text style={styles.buttonText}>CREATE TASK</Text>
                                             </TouchableOpacity>
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: 'bold',
         color: 'white',
-        marginTop: 100,
+        marginTop: 60,
         marginBottom: 40,
         paddingLeft: 25 
     },
