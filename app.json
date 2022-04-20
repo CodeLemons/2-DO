@@ -2,6 +2,7 @@
   "expo": {
     "name": "2-DO",
     "slug": "2-DO",
+    "userInterfaceStyle": "automatic",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
