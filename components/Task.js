@@ -8,27 +8,15 @@ import React, { useState } from 'react';
 const Task = () => {
     
     const [task, setTask] = useState([
-        { title: 'Go to gym', category: 'daily', key: '1' },
-        { title: 'Finish Paper', category: 'urgent', key: '2' },
-        { title: 'Shopping', category: 'weekly', key: '3' },
-        { title: 'Take a shower', category: 'personal', key: '4' },
-        { title: 'Take a shower', category: 'personal', key: '5' },
-        { title: 'Take a shower', category: 'personal', key: '6' },
-        { title: 'Take a shower', category: 'personal', key: '7' },
-        { title: 'Take a shower', category: 'personal', key: '8' },
-        { title: 'Take a shower', category: 'personal', key: '9' },
-        { title: 'Take a shower', category: 'personal', key: '11' },
-        { title: 'Take a shower', category: 'personal', key: '12' },
-        { title: 'Take a shower', category: 'personal', key: '13' },
-        { title: 'Take a shower', category: 'personal', key: '14' },
-        { title: 'Take a shower', category: 'personal', key: '15' },
-        { title: 'Take a shower', category: 'personal', key: '16' },
-        { title: 'Take a shower', category: 'personal', key: '17' },
-        { title: 'Take a shower', category: 'personal', key: '18' },
-        { title: 'Take a shower', category: 'personal', key: '19' },
-        { title: 'Take a shower', category: 'personal', key: '20' },
-        { title: 'Take a shower', category: 'personal', key: '21' },
-        { title: 'Take a shower', category: 'personal', key: '22' },
+        { title: 'Go to gym', date: '', time: '', category: 'daily', key: '1' },
+        { title: 'Finish Paper',  date: '', time: '', category: 'urgent', key: '2' },
+        { title: 'Shopping',  date: '', time: '', category: 'weekly', key: '3' },
+        { title: 'Take a shower',  date: '', time: '', category: 'personal', key: '4' },
+        { title: 'Take a shower',  date: '', time: '', category: 'personal', key: '5' },
+        { title: 'Take a shower',  date: '', time: '', category: 'personal', key: '6' },
+        { title: 'Take a shower',  date: '', time: '', category: 'personal', key: '7' },
+        { title: 'Take a shower',  date: '', time: '', category: 'personal', key: '8' },
+
     ])
 
     return (
