@@ -12,6 +12,7 @@
   "dependencies": {
     "@ja-ka/react-native-fade-in-flatlist": "^1.0.7",
     "@react-native-community/datetimepicker": "4.0.0",
+    "@react-native-picker/picker": "^2.4.1",
     "expo": "~44.0.0",
     "expo-linear-gradient": "~11.0.3",
     "expo-status-bar": "~1.2.0",
