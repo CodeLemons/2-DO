@@ -1,15 +1,14 @@
 import { View, Text, StyleSheet, Modal, TextInput,
-TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, TouchableOpacity, Button} from 'react-native';
+TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/EvilIcons';
 import React, { useState } from 'react';
 import { Formik } from 'formik';
-import DatePicker from 'react-native-date-picker'
+import { Picker } from '@react-native-picker/picker'
 
-
-export default function Heading() {
+export default function ModalComponent({ addTaskItem }) {
 
     const [modal, setModal] = useState(false);
-    const [date, setDate] = useState(new Date())
+    const [selectedLanguage, setSelectedLanguage] = useState();
 
     return (
         <View style={styles.container}>
@@ -27,38 +26,47 @@ export default function Heading() {
                                 color="#eee" 
                                 onPress={() => setModal(false)} />
                         </View>
-                        <DatePicker date={date} onDateChange={setDate} />
                         <View style={{flex: 1}}>
                             <Text style={styles.sectionTitle}>New Task</Text>
                             <Formik
-                                initialValues={{ title: '', date: '', time: ''}}
+                                initialValues={{ title: '', category: ''}}
                                 onSubmit={(values) => {
-                                    console.log(values);
+                                    addTaskItem(values);
                                 }} 
                             >
-                                {({handleChange, handleSubmit, values}) => (
-                                    <View style={{ flex: 0, alignItems: 'center'}}>
-                                        <TextInput 
-                                            style={styles.titleInput}
-                                            placeholder="Task title"
-                                            onChangeText={handleChange('title')}
-                                            value={values.title} 
-                                            placeholderTextColor="#eee" />
-                        
-                                        <Text style={styles.sectionCategory}>Category</Text>
-                                        <View style={{
-                                            flex: 0,
-                                            flexDirection: 'row', 
-                                            margin: 10,
-                                            padding: 10,
-                                            marginRight: 155}}>
-                                            <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
-                                            <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
-                                            <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
-                                            <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
-                                            <View style={{width: 30, height: 30, backgroundColor: 'red', margin: 5}}/>
+                                {({handleChange, setFieldValue, handleSubmit, values}) => (
+                                    <View style={{ flex: 0}}>
+                                        <View style={{alignItems: 'center'}}>
+                                            <TextInput 
+                                                color='white'
+                                                style={styles.titleInput}
+                                                placeholder="Task title"
+                                                onChangeText={handleChange('title')}
+                                                value={values.title} 
+                                                placeholderTextColor="#eee" />
                                         </View>
-                                        <View style={{paddingTop: 150}}>
+                                        <View style={{alignItems: 'center'}}>
+                                            <Text style={styles.sectionCategory}>Category</Text>
+                                        </View>
+                                        <View style={styles.dialogInput}>
+                                            <Picker
+                                            style={{color: 'white'}}
+                                            dropdownIconColor='white'
+                                            themeVariant='dark'
+                                            selectedValue={selectedLanguage}
+                                            mode='dialog'
+                                            onValueChange={(itemValue, itemIndex) => {
+                                                setFieldValue('category', itemValue)
+                                                setSelectedLanguage(itemValue)
+                                            }}>
+                                            <Picker.Item label="Business" value="Business" />
+                                            <Picker.Item label="Personal" value="Personal" />
+                                            <Picker.Item label="Urgent" value="Urgent" />
+                                            <Picker.Item label="Daily" value="Daily" />
+                                            <Picker.Item label="Weekly" value="Weekly" />
+                                            </Picker>
+                                        </View>
+                                        <View style={{paddingTop: 300, paddingLeft: 22}}>
                                             <TouchableOpacity 
                                                 onPress={handleSubmit}
                                                 style={styles.submitButton}>
@@ -97,9 +105,9 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: 'bold',
         color: 'white',
-        marginTop: 60,
-        marginBottom: 40,
-        paddingLeft: 25 
+        marginTop: 50,
+        marginBottom: 20,
+        paddingLeft:2 
     },
     titleInput: {
         backgroundColor: '#20212C',
@@ -108,7 +116,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        marginBottom: 20,
+        marginBottom: 10,
         elevation: 5,
         shadowOffset: { width: 2, height: 2 },
         shadowColor: 'black',
@@ -116,13 +124,24 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         width: 345,
     },
+    dialogInput: {
+        backgroundColor: '#20212C',
+        borderRadius: 10,
+        elevation: 5,
+        shadowOffset: { width: 2, height: 2 },
+        shadowColor: 'black',
+        shadowOpacity: 0.3,
+        shadowRadius: 2,
+        width: 345,
+        paddingLeft: 4
+    },
     sectionCategory: {
         fontSize: 30,
         fontWeight: 'bold',
         color: 'white',
         marginTop: 20,
         marginBottom: 20,
-        paddingRight: 213
+        paddingRight: 220
     },
     iconView: {
         paddingTop: 50,
@@ -131,20 +150,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingVertical: 12,
-        paddingHorizontal: 80,
         borderRadius: 10,
         elevation: 3,
         backgroundColor: '#da2d2d',
-    },
-    taskButton: {
-        width: 80,
-        height: 80,
-        borderRadius: 100,
-        backgroundColor: '#17181F',
-        borderWidth: 1,
-        borderColor: '#DA2D2D',
-        alignItems: 'center',
-        justifyContent: 'center'
+        width: 300
     },
     buttonText: {
         fontSize: 16,
