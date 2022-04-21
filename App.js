@@ -1,4 +1,4 @@
-import { StyleSheet, Text,View, SafeAreaView } from 'react-native';
+import { StyleSheet, SafeAreaView } from 'react-native';
 import Heading from './components/heading';
 import Modal from './components/modal';
 import Task from './components/task';
