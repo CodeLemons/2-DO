@@ -8,16 +8,25 @@ import React, { useState } from 'react';
 const Task = () => {
     
     const [task, setTask] = useState([
-        { title: 'Go to gym', date: '', time: '', category: 'daily', key: '1' },
-        { title: 'Finish Paper',  date: '', time: '', category: 'urgent', key: '2' },
-        { title: 'Shopping',  date: '', time: '', category: 'weekly', key: '3' },
-        { title: 'Take a shower',  date: '', time: '', category: 'personal', key: '4' },
-        { title: 'Take a shower',  date: '', time: '', category: 'personal', key: '5' },
-        { title: 'Take a shower',  date: '', time: '', category: 'personal', key: '6' },
-        { title: 'Take a shower',  date: '', time: '', category: 'personal', key: '7' },
-        { title: 'Take a shower',  date: '', time: '', category: 'personal', key: '8' },
+        { title: 'Go to gym', category: 'daily', key: '1' },
+        { title: 'Finish Paper', category: 'urgent', key: '2' },
+        { title: 'Shopping', category: 'weekly', key: '3' },
+        { title: 'Take a shower', category: 'personal', key: '4' },
+        { title: 'Take a shower', category: 'personal', key: '5' },
+        { title: 'Take a shower', category: 'personal', key: '6' },
+        { title: 'Take a shower', category: 'personal', key: '7' },
+        { title: 'Take a shower', category: 'personal', key: '8' },
 
     ])
+
+
+    const addTaskItem = (taskItem) => {
+        item.key = Math.random().toString();
+        setTask((currentTask) => {
+            return [taskItem, ...currentTask]
+        });
+    }
+
 
     return (
         <View style={styles.container}>
