@@ -2,6 +2,7 @@ import { FadeInFlatList } from '@ja-ka/react-native-fade-in-flatlist';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { View, StyleSheet, ScrollView} from 'react-native';
 import React, { useState } from 'react';
+import ModalComponent from './modal';
 
 
 
@@ -11,17 +12,11 @@ const Task = () => {
         { title: 'Go to gym', category: 'daily', key: '1' },
         { title: 'Finish Paper', category: 'urgent', key: '2' },
         { title: 'Shopping', category: 'weekly', key: '3' },
-        { title: 'Take a shower', category: 'personal', key: '4' },
-        { title: 'Take a shower', category: 'personal', key: '5' },
-        { title: 'Take a shower', category: 'personal', key: '6' },
-        { title: 'Take a shower', category: 'personal', key: '7' },
-        { title: 'Take a shower', category: 'personal', key: '8' },
-
     ])
 
 
     const addTaskItem = (taskItem) => {
-        item.key = Math.random().toString();
+        taskItem.key = Math.random().toString();
         setTask((currentTask) => {
             return [taskItem, ...currentTask]
         });
@@ -50,14 +45,18 @@ const Task = () => {
                             textDecorationColor='red' />
                     </View>
             )}/>
+            <View style={{flex: 0}}>
+                <ModalComponent addTaskItem={addTaskItem} />
+            </View>
         </View>
     )
 }
 
 const styles = StyleSheet.create ({
     container: {
-        flex: 3,
+        flex: 4,
         alignItems: 'center',
+        marginBottom: 30
     },
     boxStyle:{
         backgroundColor: '#20212C',
