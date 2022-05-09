@@ -9,7 +9,7 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       <Heading />
       <Task />
-      <Modal />
+      {/* <Modal /> */}
     </SafeAreaView>
   );
 }

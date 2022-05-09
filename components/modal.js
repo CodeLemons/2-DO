@@ -32,6 +32,7 @@ export default function ModalComponent({ addTaskItem }) {
                                 initialValues={{ title: '', category: ''}}
                                 onSubmit={(values) => {
                                     addTaskItem(values);
+                                    setModal(false);
                                 }} 
                             >
                                 {({handleChange, setFieldValue, handleSubmit, values}) => (
@@ -92,7 +93,7 @@ export default function ModalComponent({ addTaskItem }) {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        // flex: 1,
         alignItems: 'center',
     },
     modalContent: {
