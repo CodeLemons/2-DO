@@ -1,6 +1,6 @@
 import { FadeInFlatList } from '@ja-ka/react-native-fade-in-flatlist';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-import { View, StyleSheet, ScrollView} from 'react-native';
+import { View, Text, StyleSheet, ScrollView} from 'react-native';
 import React, { useState } from 'react';
 import ModalComponent from './modal';
 
@@ -22,7 +22,6 @@ const Task = () => {
         });
     }
 
-
     return (
         <View style={styles.container}>
             <FadeInFlatList 
@@ -35,15 +34,20 @@ const Task = () => {
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item }) => (
                     <View style={styles.boxStyle}>
-                        <BouncyCheckbox 
-                            isChecked={false}
-                            text={item.title}
-                            textStyle={{color: 'white', fontSize: 20, fontWeight: 'bold'}}
-                            size={35}
-                            iconStyle={{ borderRadius: 10, borderColor: '#da2d2d'}}
-                            fillColor='#20212C'
-                            textDecorationColor='red' />
+                        <View style={{ justifyContent: 'center'}}>
+                            <BouncyCheckbox 
+                                isChecked={false}
+                                text={item.title}
+                                textStyle={{color: 'white', fontSize: 20, fontWeight: 'bold'}}
+                                size={35}
+                                iconStyle={{ borderRadius: 10, borderColor: '#da2d2d', maringBottom: 20}}
+                                fillColor='#20212C'
+                                textDecorationColor='red' />
+                            <Text style={{color: 'white', fontSize: 12, fontWeight: 'bold', paddingLeft: 50}}>{item.category}</Text>
+                        </View>
                     </View>
+                    
+
             )}/>
             <View style={{flex: 0}}>
                 <ModalComponent addTaskItem={addTaskItem} />
@@ -62,8 +66,7 @@ const styles = StyleSheet.create ({
         backgroundColor: '#20212C',
         padding: 15,
         borderRadius: 10,
-        flexDirection: 'row',
-        alignItems: 'center',
+        flexDirection: 'column',
         justifyContent: 'space-between',
         marginBottom: 20,
         elevation: 5,
