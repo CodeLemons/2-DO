@@ -3,16 +3,13 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { View, Text, StyleSheet, ScrollView} from 'react-native';
 import React, { useState } from 'react';
 import ModalComponent from './modal';
+import Icon from 'react-native-vector-icons/EvilIcons';
 
 
 
 const Task = () => {
     
-    const [task, setTask] = useState([
-        { title: 'Go to gym', category: 'daily', key: '1' },
-        { title: 'Finish Paper', category: 'urgent', key: '2' },
-        { title: 'Shopping', category: 'weekly', key: '3' },
-    ])
+    const [task, setTask] = useState([])
 
 
     const addTaskItem = (taskItem) => {
@@ -20,6 +17,21 @@ const Task = () => {
         setTask((currentTask) => {
             return [taskItem, ...currentTask]
         });
+    }
+
+    const deleteTaskItem = (key) => {
+        setTask((prevTasks) => {
+            return prevTasks.filter(task => task.key != key);
+        });
+    };
+
+
+    const ListEmptyView = () => {
+        return (
+            <View>
+                <Text style={{textAlign: 'center', fontSize: 20, fontWeight: 'bold', marginTop: 230, color: 'white'}}> Start by adding tasks below</Text>
+            </View>
+        );
     }
 
     return (
@@ -34,21 +46,23 @@ const Task = () => {
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item }) => (
                     <View style={styles.boxStyle}>
-                        <View style={{ justifyContent: 'center'}}>
-                            <BouncyCheckbox 
-                                isChecked={false}
-                                text={item.title}
-                                textStyle={{color: 'white', fontSize: 20, fontWeight: 'bold'}}
-                                size={35}
-                                iconStyle={{ borderRadius: 10, borderColor: '#da2d2d', maringBottom: 20}}
-                                fillColor='#20212C'
-                                textDecorationColor='red' />
-                            <Text style={{color: 'white', fontSize: 12, fontWeight: 'bold', paddingLeft: 50}}>{item.category}</Text>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+                                <BouncyCheckbox
+                                    isChecked={false}
+                                    text={item.title}
+                                    textStyle={{color: 'white', fontSize: 20, fontWeight: 'bold',}}
+                                    size={35}
+                                    iconStyle={{ borderRadius: 10, borderColor: '#da2d2d'}}
+                                    fillColor='#20212C'
+                                    textDecorationColor='red' />
+                                {/* <Text style={{color: 'white', fontSize: 12, fontWeight: 'bold', color: '#da2d2d'}}>{item.category}</Text> */}
+                                <Icon style={{paddingRight: 5}} name="close" size={30} color="#da2d2d" onPress={() => deleteTaskItem(item.key)} />
                         </View>
                     </View>
                     
 
-            )}/>
+            )}
+            ListEmptyComponent={ListEmptyView}/>
             <View style={{flex: 0}}>
                 <ModalComponent addTaskItem={addTaskItem} />
             </View>
@@ -63,11 +77,10 @@ const styles = StyleSheet.create ({
         marginBottom: 30
     },
     boxStyle:{
+        color: 'green',
         backgroundColor: '#20212C',
         padding: 15,
         borderRadius: 10,
-        flexDirection: 'column',
-        justifyContent: 'space-between',
         marginBottom: 20,
         elevation: 5,
         shadowOffset: { width: 2, height: 2 },
