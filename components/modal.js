@@ -3,7 +3,16 @@ TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, TouchableOpacity} from
 import Icon from 'react-native-vector-icons/EvilIcons';
 import React, { useState } from 'react';
 import { Formik } from 'formik';
-import { Picker } from '@react-native-picker/picker'
+import { Picker } from '@react-native-picker/picker';
+import * as yup from 'yup';
+
+const ValidationSchema = yup.object({
+    title: yup.string()
+        .required()
+        .min(3),
+    category: yup.string()
+        .required()
+})
 
 export default function ModalComponent({ addTaskItem }) {
 
@@ -30,12 +39,13 @@ export default function ModalComponent({ addTaskItem }) {
                             <Text style={styles.sectionTitle}>New Task</Text>
                             <Formik
                                 initialValues={{ title: '', category: ''}}
+                                validationSchema={ValidationSchema}
                                 onSubmit={(values) => {
                                     addTaskItem(values);
                                     setModal(false);
                                 }} 
                             >
-                                {({handleChange, setFieldValue, handleSubmit, values}) => (
+                                {({handleChange, setFieldValue, handleSubmit, values, errors, touched, handleBlur}) => (
                                     <View style={{ flex: 0}}>
                                         <View style={{alignItems: 'center'}}>
                                             <TextInput 
@@ -43,8 +53,10 @@ export default function ModalComponent({ addTaskItem }) {
                                                 style={styles.titleInput}
                                                 placeholder="Task title"
                                                 onChangeText={handleChange('title')}
-                                                value={values.title} 
+                                                value={values.title}
+                                                onBlur={handleBlur('title')} 
                                                 placeholderTextColor="#eee" />
+                                            <Text style={styles.errorMessages}>{ touched.title && errors.title }</Text>
                                         </View>
                                         <View style={{alignItems: 'center'}}>
                                             <Text style={styles.sectionCategory}>Category</Text>
@@ -56,7 +68,8 @@ export default function ModalComponent({ addTaskItem }) {
                                             themeVariant='dark'
                                             selectedValue={selectedLanguage}
                                             mode='dialog'
-                                            onValueChange={(itemValue, itemIndex) => {
+                                            onBlur={handleBlur('category')} 
+                                            onValueChange={(itemValue) => {
                                                 setFieldValue('category', itemValue)
                                                 setSelectedLanguage(itemValue)
                                             }}>
@@ -67,7 +80,8 @@ export default function ModalComponent({ addTaskItem }) {
                                             <Picker.Item label="Weekly" value="Weekly" />
                                             </Picker>
                                         </View>
-                                        <View style={{paddingTop: 300, paddingLeft: 22}}>
+                                            <Text style={styles.errorMessages}>{ touched.category && errors.category }</Text>
+                                        <View style={{paddingTop: 250, paddingLeft: 22}}>
                                             <TouchableOpacity 
                                                 onPress={handleSubmit}
                                                 style={styles.submitButton}>
@@ -169,5 +183,12 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 2},
         shadowRadius: 10,
         elevation: 3,
+    },
+    errorMessages: {
+        color: 'crimson',
+        fontWeight: 'bold',
+        marginBottom: 10,
+        marginTop: 6,
+        textAlign: 'center'
     }
 })
