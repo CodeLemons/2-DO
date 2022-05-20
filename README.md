@@ -7,7 +7,7 @@ A simple app that lets you keep track of your daily tasks
 2-DO is an application written in React Native with a neat and tidy user interface that lets you add different tasks to a list, from there you can tick/cross whichever task was completed or remove it entierly from the list.
 
 ![image1](https://i.imgur.com/NhYxRWr.png) ![image2](https://i.imgur.com/Mmw506U.png)
-![image3](https://i.imgur.com/0aMFZnU.png) ![image4](https://i.imgur.com/zJo6wF2.png)
+![image3](https://i.imgur.com/0aMFZnU.png) ![image4](https://i.imgur.com/c1DfqqE.png)
 
 
 
